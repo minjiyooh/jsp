@@ -114,24 +114,39 @@
 		</c:forEach>
 		str변수의 'o'문자의 개수는 ${cnt} 개 있습니다.<br/>
 		
-		4-4.str변수의 'o'문자의 2번째 위치값만 출력하시오?<br/>
+		4-4. str변수의 'o'문자의 2번째 위치값만 출력하시오?<br/>
 		
 		<br/>
 		
-		4-5.str변수의 'o' 문자의 마지막 위치값만 출력하시오?</br>
+		4-5. str변수의 'o'문자의 마지막 위치값을 출력하시오?<br/>
 		
 		<br/>
 		<hr/>
 		
 		5. 문자열추출(substringBefore() / substringAfter())<br/>
-		문자'o'앞의 문자열을 출력? ${fn:substringBefore(str,'o')}<br/>
-		문자'o'뒤의 문자열을 출력? ${fn:substringAfter(str,'o')}<br/>
+		문자 'o'앞의 문자열을 출력? ${fn:substringBefore(str, 'o')}<br/>
+		문자 'o'뒤의 문자열을 출력? ${fn:substringAfter(str, 'o')}<br/>
 		~~~~~ 2번째 'o'의 위치값을 출력??? ~~~~<br/>
 		
 		<hr/>
 		
-		6. 문자열 분리 (split(변수,분리할문자)) : 
+		6. 문자열분리(split(변수, 분리할문자)) : 문자열분리후에는 분리된 문자들이 모두 변수에 담아줘야한다. 즉, 이변수는 배열(?)이 된다.<br/>
+		예) str변수안의 문자열중에서 'o'를 기준으로 분리해서 출력하시오?<br/>
+		<c:set var="strs" value="${fn:split(str, 'o')}"/>
+		<c:forEach var="s" items="${strs}" varStatus="st">
+			${st.count}. ${s}<br/>
+		</c:forEach>
+		str변수의 'o'문자의 개수? ${fn:length(strs) - 1} 개 있습니다.<br/>
+		<hr/>
 		
+		7. 치환(replace())<br/>
+		예) str변수안의 'o' 를 'O'로 치환..?
+		<%=str.replace("o", "O") %> / ${fn:replace(str, 'o', 'O')}<br/>
+		<hr/>
+		
+		8. 특정문자열의 포함유무? contains()<br/>
+		예1) str변수에 'My'가 포함유무? ${fn:contains(str, 'My')}<br/>
+		예2) str변수에 'my'가 포함유무? ${fn:contains(str, 'my')}<br/>
   </div>
 </div>
 <p><br/></p>
