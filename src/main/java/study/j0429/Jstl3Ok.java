@@ -31,7 +31,7 @@ public class Jstl3Ok extends HttpServlet {
 		
 		vo = new MemberVO();
 		vo.setName("김말숙");
-		vo.setAge(25);
+		vo.setAge(33);
 		vo.setGender("여자");
 		vo.setJob("회사원");
 		vo.setAddress("청주");
@@ -61,8 +61,8 @@ public class Jstl3Ok extends HttpServlet {
 		vo.setAddress("청주");
 		vos.add(vo);
 		
-		request.setAttribute("vos",vos);
-		request.setAttribute("cnt",vos.size());
+		request.setAttribute("vos", vos);
+		request.setAttribute("cnt", vos.size());
 		
 		String viewPage = "/study/0429_JSTL/jstl3Res.jsp";
 		
