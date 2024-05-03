@@ -59,7 +59,7 @@ public class PassCheck extends HttpServlet {
 			
 			encPwd = intPwd ^ key;
 			
-			strPwd = key + encPwd + "";
+			strPwd = String.valueOf(encPwd);
 			
 			// 암호화된 코드와 salt키를 합쳐서 DB에 저장처리한다.
 			System.out.println("인코딩(암호화)된 비밀번호(DB에 저장될 비밀본호) : " + strPwd);
@@ -67,7 +67,7 @@ public class PassCheck extends HttpServlet {
 			
 			// 다시 로그인할때 DB의 비밀번호를 가져와서 복호화 시켜준다.
 			long decPwd;
-			intPwd = Long.parseLong(strPwd.substring(8));
+			intPwd = Long.parseLong(strPwd);
 			decPwd = intPwd ^ key;
 			System.out.println("디코딩(복호화)된 비밀번호 : " + decPwd);
 			
