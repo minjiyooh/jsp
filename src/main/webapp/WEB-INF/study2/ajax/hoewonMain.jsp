@@ -154,7 +154,9 @@
     		success:function(res) {
     			if(res != "0") {
     				alert("회원 정보 수정 완료!!!");
-    				location.reload();
+    				// location.reload();  // 전체화면 reload...
+    				
+    				$("#hoewonList").load(location.href = ' #hoewonList');  // 부분 reload()
     			}
     			else {
     				alert("수정 실패~~");
@@ -237,34 +239,36 @@
   </form>
   <hr/>
   <h2>회 원 전 체 리 스 트</h2>
-  <table class="table table-hover text-center">
-    <tr class="table-dark text-dark">
-      <th>번호</th>
-      <th>아이디</th>
-      <th>비밀번호</th>
-      <th>성명</th>
-      <th>나이</th>
-      <th>성별</th>
-      <th>주소</th>
-      <th>비고</th>
-    </tr>
-    <c:forEach var="vo" items="${vos}" varStatus="st">
-      <tr>
-        <td>${vo.idx}</td>
-        <td>${vo.mid}</td>
-        <td>${vo.pwd}</td>
-        <td>${vo.name}</td>
-        <td>${vo.age}</td>
-        <td>${vo.gender}</td>
-        <td>${vo.address}</td>
-        <td>
-          <a href="javascript:hoewonSearch(${vo.idx})" class="btn btn-success btn-sm">개별조회</a>
-          <a href="javascript:hoewonDelete(${vo.idx})" class="btn btn-danger btn-sm">삭제</a>
-        </td>
-      </tr>
-    </c:forEach>
-    <tr><td colspan="8" class="m-0 p-0"></td></tr>
-  </table>
+  <div id="hoewonList">
+	  <table class="table table-hover text-center">
+	    <tr class="table-dark text-dark">
+	      <th>번호</th>
+	      <th>아이디</th>
+	      <th>비밀번호</th>
+	      <th>성명</th>
+	      <th>나이</th>
+	      <th>성별</th>
+	      <th>주소</th>
+	      <th>비고</th>
+	    </tr>
+	    <c:forEach var="vo" items="${vos}" varStatus="st">
+	      <tr>
+	        <td>${vo.idx}</td>
+	        <td>${vo.mid}</td>
+	        <td>${vo.pwd}</td>
+	        <td>${vo.name}</td>
+	        <td>${vo.age}</td>
+	        <td>${vo.gender}</td>
+	        <td>${vo.address}</td>
+	        <td>
+	          <a href="javascript:hoewonSearch(${vo.idx})" class="btn btn-success btn-sm">개별조회</a>
+	          <a href="javascript:hoewonDelete(${vo.idx})" class="btn btn-danger btn-sm">삭제</a>
+	        </td>
+	      </tr>
+	    </c:forEach>
+	    <tr><td colspan="8" class="m-0 p-0"></td></tr>
+	  </table>
+  </div>
 </div>
 <p><br/></p>
 <jsp:include page="/include/footer.jsp" />
