@@ -22,9 +22,10 @@
 <div class="container">
   <h2>JSTL(Java Standard Tag Library)</h2>
   <div class="text-right">
-    <button type="button" onclick="javascript:location.href='jstl2.jsp';" class="btn btn-success">JSTL반복문</button>
-    <button type="button" onclick="location.href='jstl3_vo.jsp';" class="btn btn-primary">JSTL 반복문응용</button>
-    <button type="button" onclick="location.href='jstl4_function.jsp';" class="btn btn-primary">JSTL 함수</button>
+    <button type="button" onclick="javascript:location.href='jstl2.jsp';" class="btn btn-success btn-sm">JSTL반복문</button>
+    <button type="button" onclick="location.href='jstl3_vo.jsp';" class="btn btn-primary btn-sm">JSTL 반복문응용</button>
+    <button type="button" onclick="location.href='jstl4_function.jsp';" class="btn btn-info btn-sm">JSTL 함수</button>
+    <button type="button" onclick="location.href='jstl5_format.jsp';" class="btn btn-secondary btn-sm">JSTL Formatting</button>
   </div>
   <table class="table table-bordered">
     <tr>

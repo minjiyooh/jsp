@@ -19,7 +19,7 @@ public class LoginList2 extends HttpServlet {
 
 		String sortKey = request.getParameter("sortKey");
 		
-		ArrayList<LoginVO> vos = dao.getLoginList(sortKey,0,0);
+		ArrayList<LoginVO> vos = dao.getLoginList(sortKey, 0, 0);
 		
 		request.setAttribute("sortKey", sortKey);
 		request.setAttribute("vos", vos);

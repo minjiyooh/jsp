@@ -17,8 +17,10 @@
 <div class="container">
   <h2>JSTL 반복문 응용연습</h2>
   <div class="text-right">
-    <button type="button" onclick="location.href='jstl1.jsp';" class="btn btn-primary">JSTL core라이브러리</button>
-    <button type="button" onclick="javascript:location.href='jstl2.jsp';" class="btn btn-success">JSTL반복문</button>
+    <button type="button" onclick="location.href='jstl1.jsp';" class="btn btn-primary btn-sm">JSTL core라이브러리</button>
+    <button type="button" onclick="javascript:location.href='jstl2.jsp';" class="btn btn-success btn-sm">JSTL반복문</button>
+    <button type="button" onclick="location.href='jstl4_function.jsp';" class="btn btn-info btn-sm">JSTL 함수</button>
+    <button type="button" onclick="location.href='jstl5_format.jsp';" class="btn btn-secondary btn-sm">JSTL Formatting</button>
   </div>
 	<hr/>
 	<h2>회원 자료 출력하기</h2>

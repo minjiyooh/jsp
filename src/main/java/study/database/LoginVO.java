@@ -8,6 +8,7 @@ public class LoginVO {
 	private int age;
 	private String gender;
 	private String address;
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -50,11 +51,10 @@ public class LoginVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
 	@Override
 	public String toString() {
 		return "LoginVO [idx=" + idx + ", mid=" + mid + ", pwd=" + pwd + ", name=" + name + ", age=" + age + ", gender="
 				+ gender + ", address=" + address + "]";
 	}
-	
-	
 }

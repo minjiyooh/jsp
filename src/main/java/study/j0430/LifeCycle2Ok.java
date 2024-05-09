@@ -45,12 +45,12 @@ public class LifeCycle2Ok extends HttpServlet {
 	
 	@PostConstruct
 	public void initPostConstruct() {
-		System.out.println("이곳은 사용자메소드 : @PostConstruct 어노테이션사용시 가장 먼저 수행한다.");
+		System.out.println("이곳은 사용자메소드 : @PostConstruct 어노테이션사용시 가장 먼저 수행한다.....");
 	}
 	
 	@PreDestroy
 	public void destroyPreDestroy() {
-		System.out.println("이곳은 사용자메소드 : @PreDestroy 어노테이션사용시 가장 마지막에(갱신/반납) 수행한다.");
+		System.out.println("이곳은 사용자메소드 : @PreDestroy 어노테이션사용시 가장 마지막에(갱신/반납) 수행한다.....");
 	}
 	
 }

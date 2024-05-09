@@ -5,11 +5,9 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("serial")
 @WebServlet("/GuestInputOk")
@@ -21,6 +19,9 @@ public class GuestInputOk extends HttpServlet {
 		String homePage = request.getParameter("homePage")==null ? "" : request.getParameter("homePage");
 		String content = request.getParameter("content")==null ? "" : request.getParameter("content");
 		String hostIp = request.getParameter("hostIp")==null ? "" : request.getParameter("hostIp");
+		
+		name = name.replace("<", "&lt;");
+		name = name.replace(">", "&gt;");
 		
 		GuestVO vo = new GuestVO();
 		

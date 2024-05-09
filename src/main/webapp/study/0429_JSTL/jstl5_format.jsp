@@ -60,16 +60,26 @@
 	  <c:set var="today" value="<%=new Date() %>" /><br/>
 	  오늘날짜2 : ${today} : <fmt:formatDate value="${today}" pattern="yyyy-MM-dd" /><br/>
 	  오늘날짜3 : ${today} : <fmt:formatDate value="${today}" pattern="yyyy-MM" /><br/>
-	  오늘날짜3 : ${today} : <fmt:formatDate value="${today}" pattern="MM-dd" /><br/>
-	  오늘날짜4 : ${today} : <fmt:formatDate value="${today}" pattern="yyyy년 MM월 dd일" /><br/>
-	  현지시간1: <fmt:formatDate value="${today}" pattern="hh:mm:ss"/><br/>
-	  현지시간2: <fmt:formatDate value="${today}" pattern="hh시 mm분 ss초"/><br/>
-	  현지시간3: <fmt:formatDate value="${today}" pattern="yyyy년 MM월 dd일 hh시mm분ss초"/><br/>
+	  오늘날짜4 : ${today} : <fmt:formatDate value="${today}" pattern="MM-dd" /><br/>
+	  오늘날짜5 : ${today} : <fmt:formatDate value="${today}" pattern="yyyy년 MM월 dd일" /><br/>
+	  현재시간1 : <fmt:formatDate value="${today}" pattern="hh : mm : ss" /><br/>
+	  현재시간2 : <fmt:formatDate value="${today}" pattern="hh시 mm분 ss초" /><br/>
+	  현재날짜시간 : <fmt:formatDate value="${today}" pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" /><br/>
+	  <hr/>
 	  
 	  5. 국가별설정(로케일)<br/>
 	  톰캣서버의 기본 로케일 : <%=response.getLocale() %><br/>
-	  톰캣서버의 기본 로케일을 미국식으로 변경 : <fmt:setLocale value="en_US" /><br/>
-	  <fmt:formatNumber value="${won1}" type="currency"/>
+	  톰캣버서의 기본 로케일을 미국식으로 변경 : <fmt:setLocale value="en_US" />
+	      <fmt:formatNumber value="${won1}" type="currency" />
+	  <hr/>
+	  
+	  6. URL이동 : location.href = '';    ==>>>  redirect   : core에 있음 (예1: < c : redirect url='경로' />)
+	     예2) < c : redirect url='경로' >
+	     				< c : param name="변수명" value="값" />
+	     			< / c : redirect >
+	  
+	  7. import : core..에 있음
+	  <c:import url="/include/bs4.jsp" />
 	</div>
 </div>
 <p><br/></p>

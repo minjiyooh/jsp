@@ -31,7 +31,7 @@ public class GuestDelete extends HttpServlet {
 		else {
 			out.println("<script>");
 			out.println("alert('방명록 글 삭제 실패~~');");
-			out.println("location.href='"+request.getContextPath()+"/GuestLists';");
+			out.println("location.href='"+request.getContextPath()+"/GuestList';");
 			out.println("</script>");
 		}
 	}

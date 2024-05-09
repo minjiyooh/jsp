@@ -27,7 +27,7 @@
 <p><br/></p>
 <div class="container">
   <h2>세션 삭제</h2>
-  <select name="sessionSW" id="sessionSW" onclick="sessionDelete()">
+  <select name="sessionSW" id="sessionSW" onchange="sessionDelete()">
     <option value="">선택</option>
     <option value="sMid">아이디</option>
     <option value="sNickName">닉네임</option>

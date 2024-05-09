@@ -68,7 +68,7 @@ public class FilterCertification implements Filter {
 			out.println("</script>");
 		}
 		
-//		System.out.println("2. 필터 수행후..");
+		System.out.println("2. 필터 수행후..");
 	}
 
 }

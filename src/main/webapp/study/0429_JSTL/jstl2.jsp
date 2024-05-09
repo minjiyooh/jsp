@@ -17,8 +17,10 @@
 <div class="container">
   <h2>JSTL(Java Standard Tag Library)</h2>
   <div class="text-right">
-    <button type="button" onclick="location.href='jstl1.jsp';" class="btn btn-success">JSTL core라이브러리</button>
-    <button type="button" onclick="location.href='jstl3_vo.jsp';" class="btn btn-primary">JSTL 반복문응용</button>
+    <button type="button" onclick="location.href='jstl1.jsp';" class="btn btn-success btn-sm">JSTL core라이브러리</button>
+    <button type="button" onclick="location.href='jstl3_vo.jsp';" class="btn btn-primary btn-sm">JSTL 반복문응용</button>
+    <button type="button" onclick="location.href='jstl4_function.jsp';" class="btn btn-info btn-sm">JSTL 함수</button>
+    <button type="button" onclick="location.href='jstl5_format.jsp';" class="btn btn-secondary btn-sm">JSTL Formatting</button>
   </div>
   <hr/>
   <h3>JSTL 반복문(core라이브러리 사용 : forEach문)</h3>
@@ -156,8 +158,28 @@
   <br/><br/>
   
   <h5>9. 앞의 사용법2번에 저장한 cards의 내용중, '국민카드'는 파랑색, '삼성카드'는 빨강색, 첫번째 카드의 배경색은 노랑, 마지막카드의 배경색은 하늘색 으로 출력하시오.</h5>
-  <b>숙제2....</b>
-  
+  <c:forEach var="card" items="${cards}" varStatus="st">
+		<c:if test="${st.first}">
+		  <span style="background-color:yellow">
+		    <c:if test="${card == '국민'}"><font color="blue">${card}</font></c:if>
+		    <c:if test="${card == '삼성'}"><font color="red">${card}</font></c:if>
+		    <c:if test="${card != '삼성' && card != '국민'}">${card}</c:if>
+		  </span>
+		</c:if>
+		<c:if test="${st.last}">
+		  <span style="background-color:skyblue">
+		    <c:if test="${card == '국민'}"><font color="blue">${card}</font></c:if>
+		    <c:if test="${card == '삼성'}"><font color="red">${card}</font></c:if>
+		    <c:if test="${card != '삼성' && card != '국민'}">${card}</c:if>
+		  </span>
+		</c:if>
+		<c:if test="${!st.first && !st.last}">
+	    <c:if test="${card == '국민'}"><font color="blue">${card}</font></c:if>
+	    <c:if test="${card == '삼성'}"><font color="red">${card}</font></c:if>
+	    <c:if test="${card != '삼성' && card != '국민'}">${card}</c:if>
+		</c:if>
+		<br/>
+	</c:forEach>
   
 </div>
 <p><br/></p>

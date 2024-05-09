@@ -46,7 +46,7 @@ public class UpdateOk extends HttpServlet {
 		else {
 			out.print("<script>");
 			out.print("alert('회원정보 수정 실패~~');");
-			out.print("location.href='"+request.getContextPath()+"/study/database/join.jsp';");
+			out.print("location.href='"+request.getContextPath()+"/study/database/LoginView?idx="+idx+"';");
 			out.print("</script>");
 		}
 	}

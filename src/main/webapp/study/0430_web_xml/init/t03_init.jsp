@@ -22,7 +22,7 @@
   </p>
   <hr/>
   <p><a href="${ctp}/j0430/T03_init" class="btn btn-success">컨트롤러다녀오기</a></p>
-  <p><a href="${ctp}/j0430/T03_sessionOut" class="btn btn-danger">세션끊기</a></p>
+  <p><a href="${ctp}/j0430/T03_sessionOut" class="btn btn-danger">세션끈기</a></p>
   
   
 </div>

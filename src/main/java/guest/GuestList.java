@@ -22,13 +22,13 @@ public class GuestList extends HttpServlet {
 		
 		// 2. 한페이지의 분량을 구한다.
 		int pageSize = request.getParameter("pageSize")==null ? 5 : Integer.parseInt(request.getParameter("pageSize"));
-		if(pageSize > 5) pag = 1;
 		
 		// 3. 총 레코드 건수를 구한다.(sql명령어중 count함수 이용)
 		int totRecCnt = dao.getTotRecCnt();
 		
 		// 4. 총 페이지 건수를 구한다.
 		int totPage = (totRecCnt % pageSize)==0 ? (totRecCnt / pageSize) : (totRecCnt / pageSize) + 1;
+		if(pag > totPage) pag = 1;
 		
 		// 5. 현재페이지에서 출력할 '시작 인덱스번호'를 구한다.
 		int startIndexNo = (pag - 1) * pageSize;

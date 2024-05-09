@@ -2,7 +2,7 @@
 <%
   request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="vo" class="study.j0426.T02VO" /> 
+<jsp:useBean id="vo" class="study.j0426.T02VO" />
 <!-- 
   서블릿에서의 getter()와 setter()는 JSP에서 getProperty, setProperty 이다.
 -->

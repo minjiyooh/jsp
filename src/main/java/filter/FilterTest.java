@@ -23,7 +23,5 @@ public class FilterTest implements Filter {
 		
 //		System.out.println("2. 필터 수행 후 입니다.\n");
 	}
-	
-
 
 }
