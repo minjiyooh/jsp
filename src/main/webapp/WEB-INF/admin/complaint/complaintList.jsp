@@ -35,6 +35,11 @@
   		$("#myModal #modalNickName").text(nickName);
   		$("#myModal #modalIdx").text(idx);
   	}
+  	
+  	function complaintDelete(idx) {
+  		let ans = confirm("현 게시물을 삭제하시겠습니까?");
+  		
+  	}
   </script>
 </head>
 <body>
@@ -65,7 +70,8 @@
 	      <td>${vo.cpContent}</td>
 	      <td>${vo.cpDate}</td>
 	      <td>
-	        <a href="javascript:complaintCheck('${vo.part}','${vo.partIdx}','${vo.complaint}')" class="badge badge-warning">${vo.complaint == 'NO' ? '표시중' : '<font color=white>감춰짐</font>'}</a>
+	        <a href="javascript:complaintCheck('${vo.part}','${vo.partIdx}','${vo.complaint}')" class="badge badge-warning">${vo.complaint == 'NO' ? '표시중' : '<font color=white>감춰짐</font>'}</a><br/>
+	        <a href="javascript:complaintDelete(${vo.idx})" class="badge badge-danger">삭제</a>
 	      </td>
 		    <c:set var="complaintCnt" value="${complaintCnt - 1}" />
 		  </tr>

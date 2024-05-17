@@ -30,7 +30,7 @@ public class BoardListCommand implements AdminInterface {
 		// 페이징 처리 시작
 		int pag = request.getParameter("pag")==null ? 1 : Integer.parseInt(request.getParameter("pag"));
 		int pageSize = request.getParameter("pageSize")==null ? 10 : Integer.parseInt(request.getParameter("pageSize"));
-		int totRecCnt = dao.getTotRecCnt(contentsShow);
+		int totRecCnt = dao.getTotRecCnt(contentsShow, "", "");
 		int totPage = (totRecCnt % pageSize)==0 ? (totRecCnt / pageSize) : (totRecCnt / pageSize) + 1;
 		if(pag > totPage) pag = 1;
 		int startIndexNo = (pag - 1) * pageSize;
@@ -40,7 +40,7 @@ public class BoardListCommand implements AdminInterface {
 		int lastBlock = (totPage - 1) / blockSize;
 		// 페이징 처리 끝
 		
-		List<BoardVO> vos = dao.getBoardList(startIndexNo, pageSize, contentsShow);
+		List<BoardVO> vos = dao.getBoardList(startIndexNo, pageSize, contentsShow, "", "");
 		
 		request.setAttribute("vos", vos);
 		
