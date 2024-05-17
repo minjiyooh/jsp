@@ -57,10 +57,8 @@
     </tr>
     <c:set var="curScrStartNo" value="${curScrStartNo}" />
     <c:forEach var="vo" items="${vos}" varStatus="st">
-      <%-- 
       <c:if test="${vo.openSw == 'OK' || sLevel == 0 || sNickName == vo.nickName}">
       	<c:if test="${vo.complaint == 'NO' || sLevel == 0 || sNickName == vo.nickName}">
-       --%>
 			    <tr>
 			      <td>${curScrStartNo}</td>
 			      <td class="text-left">
@@ -70,7 +68,7 @@
 			      <td>
 			        ${vo.nickName}
 			        <c:if test="${sLevel == 0}">
-			          <a href="#" onclick="modalCheck('${vo.idx}','${vo.hostIp}','${vo.mid}','${vo.nickName}')" data-toggle="modal" data-target="#myModal" class="badge badge-success">모달</a>
+			          <a href="#" onclick="modalCheck('${vo.idx}','${vo.hostIp}','${vo.mid}','${vo.nickName}')" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-sm">모달출력</a>
 			        </c:if>
 			      </td>
 			      <td>
@@ -79,10 +77,8 @@
 			      </td>
 			      <td>${vo.readNum}(${vo.good})</td>
 			    </tr>
-			<%-- 
 		    </c:if>
 	    </c:if>
-	     --%>
 	    <c:set var="curScrStartNo" value="${curScrStartNo - 1}" />
 	  </c:forEach>
 	  <tr><td colspan="5" class="m-0 p-0"></td></tr>

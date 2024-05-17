@@ -10,11 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import admin.AdminContentCommand;
-import admin.member.MemberDeleteOkCommand;
-import admin.member.MemberLevelChangeCommand;
-import admin.member.MemberListCommand;
-
 @SuppressWarnings("serial")
 @WebServlet("*.bo")
 public class BoardController extends HttpServlet {

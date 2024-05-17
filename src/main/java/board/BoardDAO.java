@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import common.GetConn;
-import member.MemberVO;
 
 public class BoardDAO {
 	private Connection conn = GetConn.getConn();
@@ -37,13 +36,22 @@ public class BoardDAO {
 	}
 
 	// 전체 게시글 보기
-	public ArrayList<BoardVO> getBoardList(int startIndexNo, int pageSize) {
+	public ArrayList<BoardVO> getBoardList(int startIndexNo, int pageSize, String contentsShow) {
 		ArrayList<BoardVO> vos = new ArrayList<BoardVO>();
 		try {
-			sql = "select *, datediff(wDate, now()) as date_diff, timestampdiff(hour, wDate, now()) as hour_diff from board order by idx desc limit ?,?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, startIndexNo);
-			pstmt.setInt(2, pageSize);
+			if(contentsShow.equals("adminOK")) {
+			  sql = "select *, datediff(wDate, now()) as date_diff, timestampdiff(hour, wDate, now()) as hour_diff from board order by idx desc limit ?,?";
+			  pstmt = conn.prepareStatement(sql);
+			  pstmt.setInt(1, startIndexNo);
+			  pstmt.setInt(2, pageSize);
+			}
+			else {
+				sql = "select *, datediff(wDate, now()) as date_diff, timestampdiff(hour, wDate, now()) as hour_diff from board where openSW = 'OK' and complaint = 'NO' union select *, datediff(wDate, now()) as date_diff, timestampdiff(hour, wDate, now()) as hour_diff from board where mid = ? order by idx desc limit ?,?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, contentsShow);
+				pstmt.setInt(2, startIndexNo);
+				pstmt.setInt(3, pageSize);
+			}
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -58,6 +66,7 @@ public class BoardDAO {
 				vo.setOpenSw(rs.getString("openSw"));
 				vo.setwDate(rs.getString("wDate"));
 				vo.setGood(rs.getInt("good"));
+				vo.setComplaint(rs.getString("complaint"));
 				
 				vo.setHour_diff(rs.getInt("hour_diff"));
 				vo.setDate_diff(rs.getInt("date_diff"));
@@ -65,7 +74,7 @@ public class BoardDAO {
 				vos.add(vo);
 			}
 		} catch (SQLException e) {
-			System.out.println("SQL 오류 : " + e.getMessage());
+			System.out.println("SQL 오류.. : " + e.getMessage());
 		} finally {
 			rsClose();			
 		}
@@ -153,16 +162,24 @@ public class BoardDAO {
 	}
 	
   // 게시물 총 레코드 건수 
-	public int getTotRecCnt() {
+	public int getTotRecCnt(String contentsShow) {
 		int totRecCnt = 0;
 		try {
-			sql = "select count(*) as cnt from board";
-			pstmt = conn.prepareStatement(sql);
+			if(contentsShow.equals("adminOK")) {
+			  sql = "select count(*) as cnt from board";
+			  pstmt = conn.prepareStatement(sql);
+			}
+			else {
+				//sql = "select sum(a.cnt) as cnt from (select count(*) as cnt from board where openSW = 'OK' and complaint = 'NO' union select count(*) as cnt from board where mid = ?) as a";
+				sql = "select sum(a.cnt) as cnt from (select count(*) as cnt from board where openSW = 'OK' and complaint = 'NO' union select count(*) as cnt from board where mid = ? and (openSW = 'NO' or complaint = 'OK')) as a";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, contentsShow);
+			}
 			rs = pstmt.executeQuery();
 			rs.next();
 			totRecCnt = rs.getInt("cnt");
 		} catch (SQLException e) {
-			System.out.println("SQL 오류 : " + e.getMessage());
+			System.out.println("SQL 오류!! : " + e.getMessage());
 		} finally {
 			rsClose();			
 		}
