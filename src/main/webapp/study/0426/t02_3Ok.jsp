@@ -7,7 +7,7 @@
   서블릿에서의 getter()와 setter()는 JSP에서 getProperty, setProperty 이다.
 -->
 <!DOCTYPE html>
-<html> 
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

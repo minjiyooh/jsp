@@ -36,9 +36,9 @@ create table boardReply (
 );
 desc boardReply;
 
-insert into boardReply values (default, 20, 'kms1234', '김말숙', default, '192.168.50.12','글을 참조 했습니다.');
-insert into boardReply values (default, 21, 'kms1234', '김말숙', default, '192.168.50.12','다녀갑니다.');
-insert into boardReply values (default, 22, 'kms1234', '김말숙', default, '192.168.50.12','멋진글이군요...');
+insert into boardReply values (default, 33, 'kms1234', '김장미', default, '192.168.50.12','글을 참조 했습니다.');
+insert into boardReply values (default, 32, 'kms1234', '김장미', default, '192.168.50.12','다녀갑니다.');
+insert into boardReply values (default, 34, 'kms1234', '김장미', default, '192.168.50.12','멋진글이군요...');
 
 select * from boardReply;
 
@@ -68,24 +68,21 @@ select sum(a.cnt) from (select count(*) as cnt from board where openSW = 'OK' an
 
 select sum(a.cnt) from (select count(*) as cnt from board where openSW = 'OK' and complaint = 'NO' union select count(*) as cnt from board where mid = 'hkd1234' and (openSW = 'NO' or complaint = 'OK')) as a;
 
-
-select * from board where openSW = 'OK' and complaint = 'NO' union select * from board where mid = 'hkd1234' order by idx desc;
-
-/* 댓글 수 연습 */
+/* 댓글수 연습 */
 select * from board order by idx desc;
 select * from boardReply order by boardIdx, idx desc;
 
--- 부모글 (33) 의 댓글만 출력
-select * from boardReply where boardIdx = 20;
-select boardIdx, count(*) as replyCnt from boardReply where boardIdx = 20;
+-- 부모글(33)의 댓글만 출력
+select * from boardReply where boardIdx = 33;
+select boardIdx,count(*) as replyCnt from boardReply where boardIdx = 33;
 
-select * from board where idx = 20;
-select *,() as replyCnt from  board where idx = 20;
+select * from board where idx = 33;
+select *,(select count(*) from boardReply where boardIdx = 33) as replyCnt from board where idx = 33;
+select *,(select count(*) from boardReply where boardIdx = b.idx) as replyCnt from board b;
 
 
 
-/* view / index 파일 연습*/
-
+/*  view  /  index 파일 연습 */
 select * from board where mid = 'admin';
 
 create view adminView as select * from board where mid = 'admin';
@@ -96,11 +93,11 @@ show tables;
 
 show full tables in javaclass where table_type like 'view';
 
-drop view adminView;
+drop view adminview;
 
 desc board;
 
-create index nickNameIndex on board(nickName); 
+create index nickNameIndex on board(nickName);
 
 show index from board;
 
