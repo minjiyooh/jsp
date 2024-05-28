@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="ctp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -56,8 +57,14 @@
           <c:set var="todaySw" value="${toYear==yy && toMonth==mm && toDay==st.count ? 1 : 0}"/>
           <td id="td${cell}" ${todaySw==1 ? 'class=today' : ''} style="text-align:left;vertical-align:top;height:90px;">
           	<c:set var="ymd" value="${yy}-${mm+1}-${st.count}"/>
-            <a href="ScheduleMenu.sc?ymd=${ymd}">${st.count}</a>
-            
+            <a href="ScheduleMenu.sc?ymd=${ymd}">
+              ${st.count}<br/>
+              <c:forEach var="vo" items="${vos}">
+                <c:if test="${fn:substring(vo.sDate,8,10)==st.count}">
+                	- ${vo.part}(${vo.partCnt})<br/>
+                </c:if>
+              </c:forEach>
+            </a>
             
           </td>
           <c:if test="${cell % 7 == 0}"></tr><tr></c:if>

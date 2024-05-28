@@ -1,11 +1,13 @@
 package schedule;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class ScheduleCommand implements ScheduleInterface {
 
@@ -84,6 +86,21 @@ public class ScheduleCommand implements ScheduleInterface {
 		request.setAttribute("nextYear", nextYear);
 		request.setAttribute("nextMonth", nextMonth);
 		request.setAttribute("nextStartWeek", nextStartWeek);
+		
+		// DB에 저장된 일정 정보들을 가져와서 저장소에 담아준다.
+		HttpSession session = request.getSession();
+		String mid = (String) session.getAttribute("sMid");
+
+		// 2024-5 ==>> 2024-05
+		String ym = "";
+		if((mm+1) < 10) ym = yy + "-0" + (mm+1);
+		else ym = yy + "-" + (mm+1);
+		
+		ScheduleDAO dao = new ScheduleDAO();
+		
+		ArrayList<ScheduleVO> vos = dao.getScheduleList(mid, ym, 0);	// 0:partCnt, 1은 내역(list)
+		
+		request.setAttribute("vos", vos);
 	}
 
 }

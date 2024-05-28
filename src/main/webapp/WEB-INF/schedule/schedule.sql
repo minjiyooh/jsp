@@ -37,6 +37,16 @@ insert into schedule values (default, 'hkd1234', '2024-06-25','업무', '프로�
 insert into schedule values (default, 'kms1234', '2024-06-30','학습', '스프링 학습시작');
 
 select * from schedule where mid = 'hkd1234' and substring(sDate,1,10) = '2024-05-14' order by sDate;
-select * from schedule where mid = 'hkd1234' and date_format(sDate, '%Y-%m-%d') = '2024-05-14' order by sDate;
-select * from schedule where mid = 'hkd1234' and date_format(sDate, '%Y-%m') = '2024-05' order by sDate;
+select * from schedule where mid = 'hkd1234' and date_format(sDate, '%Y-%m-%d') = '2024-05-24' order by sDate;
 
+select * from schedule where mid = 'hkd1234' and date_format(sDate, '%Y-%m') = '2024-05' order by sDate, part;
+select *,count(*) as cnt from schedule where mid = 'hkd1234' and date_format(sDate, '%Y-%m') = '2024-05' order by sDate, part;
+select *,count(*) as cnt from schedule where mid = 'hkd1234' and date_format(sDate, '%Y-%m') = '2024-05' group by sDate order by sDate, part;
+select *,count(*) as cnt from schedule where mid = 'hkd1234' and date_format(sDate, '%Y-%m') = '2024-05' group by sDate,part order by sDate, part;
+select *,count(*) as partCnt from schedule where mid = 'hkd1234' and date_format(sDate, '%Y-%m') = '2024-05' group by sDate,part order by sDate, part
+
+select * from schedule where mid = 'hkd1234' and date_format(sDate, '%Y-%m-%d') = '2024-05-24' order by sDate, part;
+
+select *,count(*) as cnt from schedule where mid = 'hkd1234' and date_format(sDate, '%Y-%m-%d') = '2024-05-24' order by sDate, part;
+
+select *,count(*) as cnt from schedule where mid = 'hkd1234' and date_format(sDate, '%Y-%m-%d') = '2024-05-24' group by part  order by sDate, part;

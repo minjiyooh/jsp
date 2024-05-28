@@ -15,15 +15,19 @@ public class ScheduleMenuCommand implements ScheduleInterface {
 		HttpSession session = request.getSession();
 		String mid = (String) session.getAttribute("sMid");
 		
-		String[] ymds = request.getParameterValues("ymd").toString().split("-");
+		//String[] ymds = request.getParameter("ymd").toString().split("-");
+		String ymd = request.getParameter("ymd")==null ? "" : request.getParameter("ymd");
+		
+		String[] ymds = ymd.split("-");
+		//System.out.println("ymds[1]" + ymds[1] + " , ymds[2] : " + ymds[2]);
 		if(ymds[1].length() == 1) ymds[1] = "0" + ymds[1];
 		if(ymds[2].length() == 1) ymds[2] = "0" + ymds[2];
 		
-		String ymd = ymds[0] + "-" + ymds[1] + "-" + ymds[2];
+		ymd = ymds[0] + "-" + ymds[1] + "-" + ymds[2];
 		
 		ScheduleDAO dao = new ScheduleDAO();
 		
-		ArrayList<ScheduleVO> vos = dao.getScheduleList(mid, ymd);
+		ArrayList<ScheduleVO> vos = dao.getScheduleList(mid, ymd, 1);
 		
 		request.setAttribute("vos", vos);
 		request.setAttribute("ymd", ymd);
